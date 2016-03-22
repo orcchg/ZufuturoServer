@@ -1,8 +1,16 @@
 package com.orcchg.zufuturo.database;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Properties;
 
 public class DatabaseHelper {
+
+    private static final String URL_DATABASE_DVDRENTAL = "jdbc:postgresql://localhost:9000/dvdrental";
+
+    private Properties mProperties;
+    private Connection mConnection;
 
     public DatabaseHelper() {
         try {
@@ -10,14 +18,24 @@ public class DatabaseHelper {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
+        mProperties = new Properties();
+        mProperties.setProperty("user", "postgres");
+        mProperties.setProperty("password", "111222qqq");
     }
 
     public void openConnection() {
-
+        try {
+            mConnection = DriverManager.getConnection(URL_DATABASE_DVDRENTAL, mProperties);
+        } catch (SQLException sqle) {
+        }
     }
 
     public void closeConnection() {
-
+        try {
+            mConnection.close();
+        } catch (SQLException sqle) {
+        }
     }
 }
 
