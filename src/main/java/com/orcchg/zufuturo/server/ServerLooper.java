@@ -74,7 +74,7 @@ public class ServerLooper implements Runnable {
                 }
                 throw new RuntimeException("Error accepting client connection", e);
             }
-            mThreadPool.execute(new WorkerRunnable(clientSocket, "Thread Pooled Server"));
+            mThreadPool.execute(new WorkerRunnable(clientSocket, mDbHelper, "Thread Pooled Server"));
         }
     }
 }

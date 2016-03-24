@@ -1,8 +1,6 @@
 package com.orcchg.zufuturo.database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Properties;
 
 public class DatabaseHelper {
@@ -27,15 +25,37 @@ public class DatabaseHelper {
     public void openConnection() {
         try {
             mConnection = DriverManager.getConnection(URL_DATABASE_DVDRENTAL, mProperties);
-        } catch (SQLException sqle) {
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
     public void closeConnection() {
         try {
             mConnection.close();
-        } catch (SQLException sqle) {
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+    }
+
+    /* API */
+    // --------------------------------------------------------------------------------------------
+    public String testQuery() throws SQLException {
+        StringBuilder builder = new StringBuilder("Data: \n");
+        Statement statement = null;
+        try {
+            String query = "SELECT first_name,last_name FROM customer;";
+            statement = mConnection.createStatement();
+            ResultSet result = statement.executeQuery(query);
+            while (result.next()) {
+                builder.append(result.getString("first_name")).append(", ").append(result.getString("last_name")).append("\n");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (statement != null) { statement.close(); }
+        }
+        return builder.toString();
     }
 }
 
