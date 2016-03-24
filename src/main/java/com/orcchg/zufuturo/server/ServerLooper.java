@@ -38,7 +38,6 @@ public class ServerLooper implements Runnable {
     }
 
     public synchronized void stop() {
-        mDbHelper.closeConnection();
         mIsStopped = true;
         try {
             mServerSocket.close();
@@ -58,7 +57,6 @@ public class ServerLooper implements Runnable {
     /* Server running */
     // ----------------------------------------------------------------------------------------------------------------
     private void init() {
-        mDbHelper.openConnection();
         openServerSocket();
     }
 
