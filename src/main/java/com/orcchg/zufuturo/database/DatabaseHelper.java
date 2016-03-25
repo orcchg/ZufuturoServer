@@ -4,11 +4,9 @@ import java.sql.*;
 import java.util.Properties;
 
 public class DatabaseHelper {
-
     private static final String URL_DATABASE_DVDRENTAL = "jdbc:postgresql://localhost:9000/dvdrental";
 
     private Properties mProperties;
-    private Connection mConnection;
 
     public DatabaseHelper() {
         try {
@@ -20,14 +18,6 @@ public class DatabaseHelper {
         mProperties = new Properties();
         mProperties.setProperty("user", "postgres");
         mProperties.setProperty("password", "111222qqq");
-    }
-
-    public void closeConnection() {
-        try {
-            mConnection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     /* API */
