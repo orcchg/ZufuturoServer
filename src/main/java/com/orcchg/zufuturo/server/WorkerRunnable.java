@@ -26,6 +26,7 @@ public class WorkerRunnable implements Runnable {
             String result = "";
             try {
                 result = mDbHelper.testQuery();
+                System.out.println("Result: " + result.length());
             } catch (SQLException e) {
                 e.printStackTrace();
             }

@@ -28,6 +28,7 @@ public class DatabaseHelper {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(URL_DATABASE_DVDRENTAL, mProperties);
+            System.out.println("database connected");
             String query = "SELECT first_name,last_name FROM customer;";
             statement = connection.createStatement();
             ResultSet result = statement.executeQuery(query);
