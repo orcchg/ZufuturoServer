@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.Properties;
 
 public class DatabaseHelper {
-    private static final String URL_DATABASE_DVDRENTAL = "jdbc:postgresql://localhost:9000/dvdrental";
+    private static final String URL_DATABASE_DVDRENTAL = "jdbc:postgresql:dvdrental";
 
     private Properties mProperties;
 
