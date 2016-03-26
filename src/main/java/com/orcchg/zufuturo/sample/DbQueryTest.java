@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.Properties;
 
 public class DbQueryTest {
-    private static final String URL_DATABASE_DVDRENTAL = "jdbc:postgresql://localhost:9000/dvdrental";
+    private static final String URL_DATABASE_DVDRENTAL = "jdbc:postgresql:dvdrental";
 
     public void testConnection() {
         System.out.println("Enter testConnection()");
